@@ -1,0 +1,29 @@
+<% provide(:title, 'Chat') %>
+<h1>BATTLESHIP</h1>
+<div id="chat-window" class="well" style="height:100px; overflow-y: scroll"></div>
+<h3>Instrucciones</h3>
+<h4>Escribe tu nombre seguido por la orden que deseas ejecutar, delimitado por comas.</br>
+
+Ordenes válidas:</br>
+<p></p>
+SetS,x,y,N,O,L : "x" y "y" son las coordenadas en el tablero. N es el nombre del barco (una letra), O es orientacion; H para horizontal y V para vertical, y L es la longitud del barco.</b>
+<p></p>
+hit,x,y : "x" y "y" son las coordenadas para atacar un barco.
+</br>
+<p></p>
+Ejemplo: Chucho,SetS,2,3,R,H,4 Creara un barco de nombre R en la posiscion 2,3 con orientacion horizontal de 4 espacios de largo.</h4>
+
+<h2>Recuerda hacer log in primero!</h2>
+<form role="form" class="chat">
+  <div class="form-group">
+    <label for="msg-text">Type your message:</label>
+    <input id="msg-text" type="text" class="form-control" placeholder="Type message and hit return" autofocus>
+  </div>
+</form>
+
+<script>
+window.setInterval(function() {
+  var elem = document.getElementById('chat-window');
+  elem.scrollTop = elem.scrollHeight;
+}, 50);
+</script>
