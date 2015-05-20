@@ -1,4 +1,5 @@
-class ChatController < ApplicationController
+module V1
+  class ChatController < ApplicationController
   include Tubesock::Hijack
   require 'gameclasses'
 

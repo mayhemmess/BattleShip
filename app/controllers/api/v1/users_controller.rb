@@ -1,4 +1,5 @@
-class UsersController < ApplicationController
+module V1
+  class UsersController < ApplicationController
 
   # Method to show the stats of the user logged in.
   def show
