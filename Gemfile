@@ -13,6 +13,7 @@ gem 'redis'
 gem 'puma'
 gem 'tubesock'
 gem 'capistrano', '< 3'
+gem 'rspec','~> 2.14'
 gem 'sdoc',         '0.4.0', group: :doc
 
 group :development, :test do

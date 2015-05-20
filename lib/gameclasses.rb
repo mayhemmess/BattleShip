@@ -1,5 +1,4 @@
 require 'matrix'
-require 'sessions_helper.rb'
 ###GameClasses.Rb
 ##Classfile for Matrix, Board, and EventDispatcher
 
@@ -36,6 +35,26 @@ class Board
     @ships = 0
     @name= "?"
   end
+
+ # Validates the attributes of the Board Class
+  def validation
+    if @hits != 0 || @hp !=0 || @ships != 0 || @name != "?"
+      return false
+    else
+    return true 
+    end
+  end
+
+# Validates the cells with the corresponding value
+def validationCell
+    if  @board[0,1] != "[1]" || @board[10,0] != "[10]" || @board[5,5] != "[-]" || @board[0,3] != "[3]"
+      return false
+    else
+      return true
+  end
+end
+
+
   
   ##setName
   #Basic set function for the name variable
@@ -47,6 +66,30 @@ class Board
   #Basic get function for the name variable
   def getName()
     return @name
+  end
+
+  ##getHP
+  #Basic get function for the hp variable
+  def getHP()
+    return @hp
+  end
+
+  ##getHits
+  ##Basic get function for the hits variable
+  def getHits()
+    return @hits
+  end
+
+   ##getShips
+  ##Basic get function for the hits variable
+  def getShips()
+    return @ships
+  end
+
+  ##getCell
+  ##Basic get function for the a specific cell
+  def getCell(x,y)
+    return @board[x,y]
   end
 
   ##hit
@@ -101,34 +144,39 @@ class Board
     l = l.to_i - 1
     x = x.to_i
     y = y.to_i
+    
+   if y== 0 || x==0
+    return true
+  end
+
 
     #Validate the ship's position.
     if(@board[x.to_i,y.to_i] == "[-]")
     if(o == "V")
         if(x+l >= 11)
-          puts "Error, espacio inadecuado"
+          #puts "Error, espacio inadecuado"
           return true
         end
         for i in 0..l
           if(@board[i+x,y] != "[-]")
-            puts "Espacio ya ocupado"
+            #puts "Espacio ya ocupado"
             return true
           end
         end
       else(o =="H")
         if(y+l >= 11)
-          puts "Error, espacio inadecuado"
+         # puts "Error, espacio inadecuado"
           return true
         end
         for i in 0..1
           if(@board[x,y+1] != "[-]")
-            puts "Espacio ya ocupado"
+           # puts "Espacio ya ocupado"
             return true
           end
         end
       end
     else
-      puts "Espacio ya ocupado"
+     # puts "Espacio ya ocupado"
       return true
       end
 
